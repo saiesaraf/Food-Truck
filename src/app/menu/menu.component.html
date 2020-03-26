@@ -1,0 +1,13 @@
+<p>menu works!</p>
+
+<div *ngFor="let item of allItems; let i = index">
+  {{ item.name }} : ${{ item.cost }}
+  <input type="number" [(ngModel)]="quantity[i]" (ngModelChange)="getTotalBill()">
+</div>
+
+Your total Bill is {{ totalCost }}
+<button (click)="onClick()">Add Menu</button>
+
+<div *ngIf="clickMessage">
+  <app-add-menu></app-add-menu>
+</div>

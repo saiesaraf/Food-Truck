@@ -1,0 +1,19 @@
+<p>add-menu works!</p>
+
+<form (submit)="onAddMenu()" class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Favorite food</mat-label>
+    <input matInput placeholder="Ex. Pizza"
+    name="name"
+    [(ngModel)]="name" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Cost</mat-label>
+    <textarea matInput placeholder="Minimum is 0"
+    name="cost"
+    [(ngModel)]="cost"></textarea>
+  </mat-form-field>
+
+  <button mat-raised-button color="accent" type="submit">Add Menu</button>
+</form>
