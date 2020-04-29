@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { DataService } from '../data.service';
+
 
 @Component({
   selector: 'app-register',

@@ -1,13 +1,20 @@
-
-
 <div *ngFor="let item of allItems; let i = index">
   {{ item.name }} : ${{ item.cost }}
-  <input type="number" [(ngModel)]="quantity[i]" (ngModelChange)="getTotalBill()">
+  <input
+    type="number"
+    [(ngModel)]="quantity[i]"
+    (ngModelChange)="getTotalBill()"
+  />
 </div>
 
-Your total Bill is {{ totalCost }}
-<button (click)="onClick()">Add Menu</button>
+<div *ngIf="totalCost > 0">Your total Bill is {{ totalCost }}</div>
 
-<div *ngIf="clickMessage">
-  <app-add-menu></app-add-menu>
+
+isLogged in ==== {{ data.isloggedin }}
+<div *ngIf="data.isloggedin">
+  <button (click)="onClick()">Add Menu</button>
+
+  <div *ngIf="clickMessage">
+    <app-add-menu></app-add-menu>
+  </div>
 </div>

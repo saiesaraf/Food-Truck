@@ -15,6 +15,9 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MDBBootstrapModule, IconsModule } from 'angular-bootstrap-md';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { MainHomeComponent } from './main-home/main-home.component';
+import { DataService } from './data.service';
 
 
 
@@ -26,7 +29,9 @@ import { MDBBootstrapModule, IconsModule } from 'angular-bootstrap-md';
     NavBarComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserProfileComponent,
+    MainHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -38,13 +43,14 @@ import { MDBBootstrapModule, IconsModule } from 'angular-bootstrap-md';
     FormsModule,
     MDBBootstrapModule.forRoot(),
     IconsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent },
+    RouterModule.forChild([
+      { path: 'main-home', component: MainHomeComponent},
       { path: 'login', component : LoginComponent },
-      { path: 'Register', component : RegisterComponent}
+      { path: 'Register', component : RegisterComponent},
+      { path: 'home', component : HomeComponent },
     ])
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

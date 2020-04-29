@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { DataService } from '../data.service';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -12,7 +13,7 @@ export class MenuComponent implements OnInit {
   selectedMenu: any[];
   clickMessage = '';
 
-  constructor(private data: DataService) {
+  constructor(public data: DataService) {
     this.totalCost = 0;
     this.quantity = [];
     this.selectedMenu = [];

@@ -1,13 +1,13 @@
 <!-- Default form login -->
-<form class="text-center border border-light p-5">
+<form class="text-center border border-light p-5" (submit)="LoginUser()">
 
   <p class="h4 mb-4">Sign in</p>
 
   <!-- Email -->
-  <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+  <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" name="email" [(ngModel)]="email" placeholder="E-mail">
 
   <!-- Password -->
-  <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+  <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" name="password" [(ngModel)]="password" placeholder="Password">
 
   <div class="d-flex justify-content-around">
     <div>
@@ -46,3 +46,11 @@
 
 </form>
 <!-- Default form login -->
+
+
+<div *ngIf="loggedin">
+  <app-user-profile></app-user-profile>
+</div>
+
+
+logg in {{ data.isloggedin }}
