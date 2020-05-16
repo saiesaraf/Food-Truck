@@ -1,20 +1,38 @@
-<div *ngFor="let item of allItems; let i = index">
-  {{ item.name }} : ${{ item.cost }}
-  <input
-    type="number"
-    [(ngModel)]="quantity[i]"
-    (ngModelChange)="getTotalBill()"
-  />
+<div class="container">
+  <header class="jumbotron">
+    <div class="container">
+      <h1>Welcome to Yelpcamp</h1>
+      <p>View our hand picked campgrounds from all over the world</p>
+      <p>
+        <a class="btn btn-primary btn-large" href="/campgrounds/new"
+          >Add a new campground</a
+        >
+      </p>
+    </div>
+  </header>
+  <div *ngFor="let item of allItems; let i = index">
+    <div class="row text-center"style="display:flex;flex-wrap:wrap;">
+        <div class="col-md-6 col-sm-6">
+          <div class="thumbnail">
+            <img [src]="item.image" alt="image">
+              <div class="caption">
+                <h4>{{ item.name }}</h4>
+                <h4>Cost is {{ item.cost }}</h4>
+            </div>
+                <p>
+                  <input
+                      type="number"
+                      [(ngModel)]="quantity[i]"
+                      (ngModelChange)="getTotalBill()"
+                    >
+                </p>
+        </div>
+    </div>
+  </div>
 </div>
-
+</div>
 <div *ngIf="totalCost > 0">Your total Bill is {{ totalCost }}</div>
 
-
-isLogged in ==== {{ data.isloggedin }}
 <div *ngIf="data.isloggedin">
   <button (click)="onClick()">Add Menu</button>
-
-  <div *ngIf="clickMessage">
-    <app-add-menu></app-add-menu>
-  </div>
 </div>

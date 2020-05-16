@@ -7,19 +7,31 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { MenuComponent } from './menu/menu.component';
 import { AddMenuComponent } from './add-menu/add-menu.component';
-import { RouterModule} from '@angular/router';
+import { RouterModule, RouterOutlet, Routes} from '@angular/router';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MDBBootstrapModule, IconsModule } from 'angular-bootstrap-md';
+import { FlashMessagesModule, FlashMessagesComponent } from 'angular2-flash-messages';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { MainHomeComponent } from './main-home/main-home.component';
+import {MatCardModule} from '@angular/material/card';
 import { DataService } from './data.service';
+import { LogoutComponent } from './logout/logout.component';
+import { OwlModule } from 'ngx-owl-carousel';
 
-
+const routes: Routes = [
+  { path: 'menu', component: MenuComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'user-profile', component: UserProfileComponent},
+  { path: 'addmenu', component: AddMenuComponent},
+  { path: 'logout', component: LogoutComponent}
+];
 
 @NgModule({
   declarations: [
@@ -31,7 +43,8 @@ import { DataService } from './data.service';
     LoginComponent,
     RegisterComponent,
     UserProfileComponent,
-    MainHomeComponent
+    MainHomeComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -41,14 +54,14 @@ import { DataService } from './data.service';
     MatInputModule,
     HttpClientModule,
     FormsModule,
-    MDBBootstrapModule.forRoot(),
+    MatCardModule,
+    // MDBBootstrapModule.forRoot(),
+    MatToolbarModule,
     IconsModule,
-    RouterModule.forChild([
-      { path: 'main-home', component: MainHomeComponent},
-      { path: 'login', component : LoginComponent },
-      { path: 'Register', component : RegisterComponent},
-      { path: 'home', component : HomeComponent },
-    ])
+    FlashMessagesModule.forRoot(),
+    RouterModule.forRoot(routes),
+    OwlModule
+
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

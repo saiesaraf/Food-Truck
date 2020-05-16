@@ -8,24 +8,40 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./add-menu.component.css']
 })
 export class AddMenuComponent implements OnInit {
-  name: string;
+  fname: string;
   cost: number;
+  description: string;
+  image1: string;
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
+
   }
 
-  onAddMenu()
-  {
-    console.log('name is ' + this.name);
-    console.log('cost is ' + this.cost);
+  onImagePicked(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+  }
 
+  onAddMenu(form: NgForm)
+  {
+    console.log('name is ' + form.value.fname);
+    console.log('cost is ' + form.value.cost);
+    console.log('description is ' + form.value.description);
+    console.log('image is ' + form.value.image1);
+    if (form.invalid)
+    {
+      return;
+    }
     const newMenu = {
-      name: this.name,
-      cost: this.cost
+      name: form.value.fname,
+      cost: form.value.cost,
+      description: form.value.description,
+      image: form.value.image1
     };
     this.data.addMenu(newMenu).subscribe(() => {
-      this.data.getMenu()
+      this.data.getMenu();
       console.log('successfully added new menu');
     });
   }

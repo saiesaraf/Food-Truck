@@ -10,14 +10,17 @@ export class DataService {
   addurl: string;
   registerUrl: string;
   loginUrl: string;
+  profileUrl: string;
+  userId: string;
   public isloggedin: boolean;
+
   constructor(private http: HttpClient) {
-    console.log('i am in constructor')
     this.url = 'http://localhost:3000/menuNew';
     this.billurl = 'http://localhost:3000/menuNew/post_order';
     this.addurl = 'http://localhost:3000/menuNew/menu_name';
     this.registerUrl = 'http://localhost:3000/users/register';
     this.loginUrl = 'http://localhost:3000/users/login';
+    this.profileUrl = 'http://localhost:3000/users/userdetails/';
     this.isloggedin = false;
   }
 
@@ -39,5 +42,11 @@ export class DataService {
 
   loginUser(user: any) {
     return this.http.post<any>(this.loginUrl, user);
+  }
+
+  getUserInfo() {
+    const url = this.profileUrl + this.userId
+    console.log('url=='+url+"end")
+    return this.http.get<any>(this.profileUrl + this.userId);
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -12,8 +13,11 @@ export class MenuComponent implements OnInit {
   quantity: number[];
   selectedMenu: any[];
   clickMessage = '';
+  imageFromService: string;
+  imageToShow: any;
+  routerLink: any;
 
-  constructor(public data: DataService) {
+  constructor(public data: DataService, private router: Router) {
     this.totalCost = 0;
     this.quantity = [];
     this.selectedMenu = [];
@@ -48,6 +52,8 @@ export class MenuComponent implements OnInit {
   showMenu() {
     this.data.getMenu().subscribe((menu: any) => {
       this.allItems = menu;
+      this.imageFromService = menu.image;
+      console.log(JSON.stringify(this.allItems));
       for (let i = 0; i < this.allItems.length; i++) {
         this.quantity.push(0);
       }
@@ -56,5 +62,6 @@ export class MenuComponent implements OnInit {
 
   onClick() {
     this.clickMessage = 'You clicked me';
+    this.router.navigate(['/addmenu']);
   }
 }

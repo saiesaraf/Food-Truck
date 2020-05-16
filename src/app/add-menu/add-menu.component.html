@@ -1,19 +1,23 @@
-<p>add-menu works!</p>
+<form (submit)="onAddMenu(addMenuForm)" #addMenuForm="ngForm">
+    <mat-form-field>
+        <input matInput name="fname" ngModel type="fname" placeholder="food item name" #fnameInput="ngModel" required fname>
+        <mat-error *ngIf="fnameInput.invalid">Please enter a valid food item name</mat-error>
+      </mat-form-field>
 
-<form (submit)="onAddMenu()" class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Favorite food</mat-label>
-    <input matInput placeholder="Ex. Pizza"
-    name="name"
-    [(ngModel)]="name" />
+  <mat-form-field>
+    <input matInput name="cost" type="number" min="0" max="99" ng-pattern="/^[0-9]{1,7}$/" ngModel type="cost" minimum="0" placeholder="Cost" #costInput="ngModel" required cost>
+    <mat-error *ngIf="costInput.invalid">Please enter a valid cost</mat-error>
   </mat-form-field>
 
-  <mat-form-field class="example-full-width">
-    <mat-label>Cost</mat-label>
-    <textarea matInput placeholder="Minimum is 0"
-    name="cost"
-    [(ngModel)]="cost"></textarea>
-  </mat-form-field>
+  <mat-form-field>
+      <input matInput name="description" ngModel type="description" placeholder="Description" #descriptionInput="ngModel">
+      <mat-error *ngIf="descriptionInput.invalid">Please enter a valid description</mat-error>
+    </mat-form-field>
 
+    <mat-form-field>
+        <input matInput name="image1" ngModel type="image1" placeholder="Add image url" #imageInput="ngModel" required image1>
+        <mat-error *ngIf="imageInput.invalid">Please enter a image url</mat-error>
+      </mat-form-field>
   <button mat-raised-button color="accent" type="submit">Add Menu</button>
 </form>
+
