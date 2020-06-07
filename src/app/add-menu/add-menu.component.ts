@@ -26,10 +26,10 @@ export class AddMenuComponent implements OnInit {
 
   onAddMenu(form: NgForm)
   {
-    console.log('name is ' + form.value.fname);
-    console.log('cost is ' + form.value.cost);
-    console.log('description is ' + form.value.description);
-    console.log('image is ' + form.value.image1);
+    // console.log('name is ' + form.value.fname);
+    // console.log('cost is ' + form.value.cost);
+    // console.log('description is ' + form.value.description);
+    // console.log('image is ' + form.value.image1);
     if (form.invalid)
     {
       return;

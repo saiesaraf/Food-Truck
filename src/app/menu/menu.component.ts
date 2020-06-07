@@ -1,6 +1,7 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
+import { Order } from '../order';
 
 @Component({
   selector: 'app-menu',
@@ -16,10 +17,8 @@ export class MenuComponent implements OnInit {
   imageFromService: string;
   imageToShow: any;
   routerLink: any;
-
   constructor(public data: DataService, private router: Router) {
-    this.totalCost = 0;
-    this.quantity = [];
+    this.data.quantity = [];
     this.selectedMenu = [];
   }
 
@@ -28,34 +27,62 @@ export class MenuComponent implements OnInit {
   }
 
   getTotalBill() {
-    for (let i = 0; i < this.allItems.length; i++) {
-      console.log('here' + this.quantity[i]);
-      if (this.quantity[i] != 0) {
+    for (let i = 0; i < this.data.allItems.length; i++) {
+      if (this.data.order[i].quantity > 0) {
         const newObj = {
-          name: this.allItems[i].name,
-          quantity: this.quantity[i]
+          name: this.data.allItems[i].name,
+          quantity: this.data.order[i].quantity
         };
-        const index = this.selectedMenu.findIndex(
-          item => item.name == this.allItems[i].name
+        const index = this.data.selectedItems.findIndex(
+          item => item.name === this.data.allItems[i].name
         );
-        if (index == -1) {
-          this.selectedMenu.push(newObj);
+
+        if (index === -1) {
+          this.data.selectedItems.push(newObj);
         } else {
-          this.selectedMenu[index] = newObj;
+          this.data.selectedItems[index] = newObj;
         }
+        //console.log('selected imtes', this.data.selectedItems)
+      }
+      else{
+         const index = this.data.selectedItems.findIndex(
+          item => item.name === this.data.allItems[i].name
+          );
+          if(index!=-1) {
+            this.data.selectedItems.splice(index,1);
+          }
       }
     }
-    this.data.getBill(this.selectedMenu).subscribe((result: any) => {
-      this.totalCost = result.total;
+    this.data.getBill().subscribe((result: any) => {
+      // console.log(result.total);
+      this.data.totalCost = result.total;
+      //console.log('from dataservice' + this.data.totalCost);
     });
   }
+
+  getTotalBill2()
+  {
+    for (let i = 0; i < this.data.allItems.length; i++)
+    {
+
+    }
+  }
+
   showMenu() {
     this.data.getMenu().subscribe((menu: any) => {
-      this.allItems = menu;
+      this.data.allItems = menu;
       this.imageFromService = menu.image;
-      console.log(JSON.stringify(this.allItems));
-      for (let i = 0; i < this.allItems.length; i++) {
-        this.quantity.push(0);
+
+      // console.log(JSON.stringify(this.data.allItems));
+      for (let i = 0; i < this.data.allItems.length; i++) {
+//        this.quantity.push(0);
+        this.data.quantity.push(0);
+        const currOrder: Order = {
+          name: this.data.allItems[i].name,
+          quantity: 0
+        }
+        this.data.order.push(currOrder)
+
       }
     });
   }

@@ -1,0 +1,14 @@
+<mat-card>
+  <div *ngFor="let curr of selectedMenu">
+     <div *ngIf="curr.quantity > 0">
+      Item : {{ curr.name}} : {{ curr.quantity }} : {{ getitemCost(curr.name)}}
+         <i (click)="removeFromCart(curr.name)"class="fa fa-trash"></i>
+      </div>
+  </div>
+<div *ngIf="getTotal() >0">
+      Your total Bill is {{ getTotal() }}
+</div>
+</mat-card>
+
+
+

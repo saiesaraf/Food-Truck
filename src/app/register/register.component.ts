@@ -1,7 +1,7 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { NgForm, Validators, FormControl } from '@angular/forms';
 import {FlashMessagesService} from 'angular2-flash-messages';
 
 @Component({
@@ -10,14 +10,20 @@ import {FlashMessagesService} from 'angular2-flash-messages';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
   fname: string;
   email: string;
   password: string;
   registered: boolean;
   isValidForm: boolean;
   isnameValid: boolean;
+  ispasswordValid: boolean;
+
+
+
   constructor(private data: DataService, private router: Router, private flashMessage: FlashMessagesService ) {
     this.registered = false;
+    this.ispasswordValid = false;
   }
 
   ngOnInit(): void {}
@@ -58,6 +64,9 @@ export class RegisterComponent implements OnInit {
 
   }
 
+  validation()
+  {
 
+  }
 
 }

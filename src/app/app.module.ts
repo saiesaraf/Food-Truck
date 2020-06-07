@@ -23,14 +23,20 @@ import {MatCardModule} from '@angular/material/card';
 import { DataService } from './data.service';
 import { LogoutComponent } from './logout/logout.component';
 import { OwlModule } from 'ngx-owl-carousel';
+import { AddCartComponent } from './add-cart/add-cart.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { BackgroundComponent } from './background/background.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
-  { path: 'menu', component: MenuComponent },
+  { path: 'menu', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'user-profile', component: UserProfileComponent},
   { path: 'addmenu', component: AddMenuComponent},
-  { path: 'logout', component: LogoutComponent}
+  { path: 'logout', component: LogoutComponent},
+  { path: 'payment', component: PaymentComponent},
+  { path: 'background', component: BackgroundComponent}
 ];
 
 @NgModule({
@@ -44,7 +50,10 @@ const routes: Routes = [
     RegisterComponent,
     UserProfileComponent,
     MainHomeComponent,
-    LogoutComponent
+    LogoutComponent,
+    AddCartComponent,
+    BackgroundComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +69,8 @@ const routes: Routes = [
     IconsModule,
     FlashMessagesModule.forRoot(),
     RouterModule.forRoot(routes),
-    OwlModule
+    OwlModule,
+    MatGridListModule
 
   ],
   providers: [DataService],

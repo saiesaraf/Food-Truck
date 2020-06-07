@@ -9,7 +9,8 @@
         <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
+        <input matInput name="password" ngModel type="password" placeholder="password" #passwordInput="ngModel" required password minlength="5" pattern='/^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{4,20}/'>
+
         <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
       </mat-form-field>
       <button mat-raised-button color="accent" type="submit">Register</button>

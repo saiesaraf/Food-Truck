@@ -1,0 +1,12 @@
+.menu {
+  width: 70%;
+  float: left;
+  padding: 20px;
+  border: 2px solid red;
+}
+
+.cart{
+  position: top;
+  float: top;
+  align-self: top;
+}
