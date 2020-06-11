@@ -71,8 +71,9 @@ export class AddCartComponent implements OnInit {
 
   }
 
-  onClick()
+  placedOrder()
   {
+    console.log('placed order');
     this.router.navigate(['/payment']);
   }
 

@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
   loggedin: boolean;
+  isadmin: boolean;
   constructor(public data: DataService, private router: Router,
               public auth: AuthenticationService,
               private flashMessage: FlashMessagesService) { }
@@ -40,7 +41,19 @@ export class LoginComponent implements OnInit {
         this.auth.storeUserData(loginDetails.token, form.value.email);
         this.loggedin = true;
         this.data.isloggedin = true;
+
+        if ( prevUser.email == "saie1.saraf@gmail.com")
+        {
+          this.data.isadmin = true;
+          this.isadmin = true;
+        }
+
+        if ( this.data.isloggedin === true){
         this.router.navigate(['user-profile']);
+        }
+        if ( this.data.isadmin === true){
+          this.router.navigate(['/addmenu']);
+        }
       }
       else{
         this.flashMessage.show(JSON.stringify(loginDetails['msg']),

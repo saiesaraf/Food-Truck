@@ -60,14 +60,6 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  getTotalBill2()
-  {
-    for (let i = 0; i < this.data.allItems.length; i++)
-    {
-
-    }
-  }
-
   showMenu() {
     this.data.getMenu().subscribe((menu: any) => {
       this.data.allItems = menu;

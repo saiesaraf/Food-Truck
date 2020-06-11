@@ -18,10 +18,11 @@ export class DataService {
   totalCost: any;
   cost: any;
   public isloggedin: boolean;
+  public isadmin: boolean;
   quantity: any[];
 
   // add
-  order: Order[]
+  order: Order[];
 
   constructor(private http: HttpClient) {
     this.url = 'http://localhost:3000/menuNew';
@@ -31,6 +32,7 @@ export class DataService {
     this.loginUrl = 'http://localhost:3000/users/login';
     this.profileUrl = 'http://localhost:3000/users/userdetails/';
     this.isloggedin = false;
+    this.isadmin = false;
     this.selectedItems = [];
     this.cost = [];
     this.totalCost = 0;

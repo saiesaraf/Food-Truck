@@ -1,16 +1,38 @@
-<mat-card>
+<div class="main-div">
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
     <form (submit)="LoginUser(loginForm)" #loginForm="ngForm">
-      <mat-form-field>
-        <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
-        <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
-        <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
-      </mat-form-field>
-      <button mat-raised-button color="accent" type="submit">Login</button>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field>
+              <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
+              <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+        <td>
+            <mat-form-field>
+                <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
+                <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
+              </mat-form-field>
+      </td>
+      </tr></table>
     </form>
-  </mat-card>
+  </mat-card-content>
+  <mat-card-actions>
+      <button mat-raised-button color="accent" type="submit">Login</button>
+  </mat-card-actions>
+  <mat-card-actions>
+      <button mat-raised-button color="accent" type="submit">Forgot Password</button>
+  </mat-card-actions>
+</mat-card>
+
+
 
   <div *ngIf="loggedin">
       <app-user-profile></app-user-profile>

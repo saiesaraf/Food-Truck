@@ -27,6 +27,7 @@ import { AddCartComponent } from './add-cart/add-cart.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { BackgroundComponent } from './background/background.component';
 import { PaymentComponent } from './payment/payment.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   { path: 'menu', component: HomeComponent },
@@ -36,7 +37,8 @@ const routes: Routes = [
   { path: 'addmenu', component: AddMenuComponent},
   { path: 'logout', component: LogoutComponent},
   { path: 'payment', component: PaymentComponent},
-  { path: 'background', component: BackgroundComponent}
+  { path: 'background', component: BackgroundComponent},
+  {path: 'admin', component: AdminComponent}
 ];
 
 @NgModule({
@@ -53,7 +55,8 @@ const routes: Routes = [
     LogoutComponent,
     AddCartComponent,
     BackgroundComponent,
-    PaymentComponent
+    PaymentComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

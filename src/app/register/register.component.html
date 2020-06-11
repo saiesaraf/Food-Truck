@@ -1,18 +1,24 @@
 <mat-card>
-    <form (submit)="registerUser(registerForm)" #registerForm="ngForm">
-        <mat-form-field>
+    <form class="my-form" (submit)="registerUser(registerForm)" #registerForm="ngForm">
+        <mat-form-field class="full-width">
             <input matInput name="fname" ngModel type="fname" placeholder="Name" #fnameInput="ngModel" required fname>
             <mat-error *ngIf="fnameInput.invalid">Please enter a valid name</mat-error>
           </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="full-width">
         <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
         <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput name="password" ngModel type="password" placeholder="password" #passwordInput="ngModel" required password minlength="5" pattern='/^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{4,20}/'>
 
-        <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
+      <mat-form-field class="full-width" class="noSpace">
+        <input matInput name="password" ngModel type="password" placeholder="password" #passwordInput="ngModel" required password minlength="1" >
       </mat-form-field>
+      <div class="error" *ngIf="isPasswordInvalid(registerForm)">Wrong password.</div>
+
+      <mat-form-field class="full-width" class="noSpace">
+          <input matInput name="password2" ngModel type="password" placeholder="password" #passwordInput="ngModel" required password minlength="1" >
+        </mat-form-field>
+        <div class="error" *ngIf="NotequalPassword(registerForm)">Passwords do not match</div>
+
       <button mat-raised-button color="accent" type="submit">Register</button>
     </form>
   </mat-card>
