@@ -1,3 +1,4 @@
+
 <div class="main-div">
 <mat-card class="example-card">
   <mat-card-header>
@@ -26,6 +27,13 @@
   </mat-card-content>
   <mat-card-actions>
       <button mat-raised-button color="accent" type="submit">Login</button>
+  </mat-card-actions>
+  <mat-card-actions>
+    <div class="card-block">
+      <button class="btn btn-social-icon btn-google" (click)="signInWithGoogle()"><span class="fa fa-google"></span></button>
+      <!-- <button class="btn btn-social-icon btn-facebook" (click)="signInWithFB()"><span class="fa fa-facebook"></span></button>
+      <button class="btn btn-social-icon btn-linkedin" (click)="signInWithLinkedIn()"><span class="fa fa-linkedin"></span></button>-->
+    </div>
   </mat-card-actions>
   <mat-card-actions>
       <button mat-raised-button color="accent" type="submit">Forgot Password</button>

@@ -28,6 +28,24 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { BackgroundComponent } from './background/background.component';
 import { PaymentComponent } from './payment/payment.component';
 import { AdminComponent } from './admin/admin.component';
+import { AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
+import { SocialLoginModule } from 'angularx-social-login';
+
+
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('440531690672-3cmbjc8jhpd86eil1ms0iioqvls0sf3r.apps.googleusercontent.com')
+  }
+  // {
+  //   id: FacebookLoginProvider.PROVIDER_ID,
+  //   provider: new FacebookLoginProvider('561602290896109')
+  // },
+  // {
+  //   id: LinkedInLoginProvider.PROVIDER_ID,
+  //   provider: new LinkedInLoginProvider("78iqy5cu2e1fgr")
+  // }
+]);
 
 const routes: Routes = [
   { path: 'menu', component: HomeComponent },
@@ -40,6 +58,10 @@ const routes: Routes = [
   { path: 'background', component: BackgroundComponent},
   {path: 'admin', component: AdminComponent}
 ];
+
+export function provideConfig() {
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -67,6 +89,7 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     MatCardModule,
+    SocialLoginModule,
     // MDBBootstrapModule.forRoot(),
     MatToolbarModule,
     IconsModule,
@@ -76,7 +99,12 @@ const routes: Routes = [
     MatGridListModule
 
   ],
-  providers: [DataService],
+  providers: [
+    DataService,
+    {
+    provide: AuthServiceConfig,
+    useFactory: provideConfig
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
