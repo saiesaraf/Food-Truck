@@ -17,7 +17,8 @@ export class RegisterComponent implements OnInit {
   isValidForm: boolean;
   isnameValid: boolean;
   ispasswordValid: boolean;
-
+  inputPassword: string;
+  inputPassword2: string;
   constructor(
     private data: DataService,
     private router: Router,
@@ -33,6 +34,8 @@ export class RegisterComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+    console.log(form.value.password);
+    console.log(form.value.password2);
 
     const newUser = {
       name: form.value.fname,
@@ -60,8 +63,8 @@ export class RegisterComponent implements OnInit {
 
   isPasswordInvalid(form: NgForm) {
     const inputPassword = form.value.password;
-    const regularExpression = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{4,20}/;
 
+    const regularExpression = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{4,20}/;
     if (!regularExpression.test(inputPassword)) {
       return true;
     } else {
@@ -69,16 +72,20 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  NotequalPassword(form: NgForm)
-  {
-    const inputPassword = form.value.password;
-    const inputPassword2 = form.value.password2;
-    if( inputPassword != inputPassword2)
-    {
+  isPasswordEntered(form: NgForm) {
+    if (form.value.password) {
       return true;
     }
-    else
-    {
+
+    return false;
+  }
+
+  NotequalPassword(form: NgForm) {
+    const inputPassword = form.value.password;
+    const inputPassword2 = form.value.password2;
+    if (inputPassword != inputPassword2) {
+      return true;
+    } else {
       return false;
     }
   }

@@ -2,6 +2,7 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
 import { Order } from '../order';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @Component({
   selector: 'app-menu',
@@ -17,6 +18,7 @@ export class MenuComponent implements OnInit {
   imageFromService: string;
   imageToShow: any;
   routerLink: any;
+  term: string;
   constructor(public data: DataService, private router: Router) {
     this.data.quantity = [];
     this.selectedMenu = [];

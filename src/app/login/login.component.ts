@@ -35,16 +35,35 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.authService.authState.subscribe(user => {
       this.user = user;
-      console.log(user);
+      console.log('aaa' + user + this.data.isloggedin);
     });
   }
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => {
       console.log(x);
+      this.auth.storeUserData('dummy', x.email);
+      this.data.isloggedin = true;
+      this.flashMessage.show('You are now logged in successfully!', {
+        cssClass: 'alert-success',
+        timeout: 3000
+      });
       this.router.navigate(['user-profile']);
     });
   }
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => {
+      console.log(x);
+      this.auth.storeUserData('dummy', x.email);
+      this.data.isloggedin = true;
+      this.flashMessage.show('You are now logged in successfully!', {
+        cssClass: 'alert-success',
+        timeout: 3000
+      });
+      this.router.navigate(['user-profile']);
+    })
+  }
   LoginUser(form: NgForm) {
+    console.log('here step1')
     if (form.invalid) {
       return;
     }

@@ -1,9 +1,6 @@
 <app-nav-bar></app-nav-bar>
-<app-main-home></app-main-home>
+
 <flash-messages></flash-messages>
 <router-outlet></router-outlet>
 
-
-
-
-
+<app-background *ngIf = "router.url == '/'"></app-background>

@@ -1,47 +1,76 @@
-
 <div class="main-div">
-<mat-card class="example-card">
-  <mat-card-header>
-    <mat-card-title>Login</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
     <form (submit)="LoginUser(loginForm)" #loginForm="ngForm">
-      <table class="example-full-width" cellspacing="0">
-        <tr>
-          <td>
-            <mat-form-field>
-              <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
-              <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-        <td>
-            <mat-form-field>
-                <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
-                <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
+      <mat-card-content>
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field>
+                <input
+                  matInput
+                  name="email"
+                  ngModel
+                  type="email"
+                  placeholder="E-Mail"
+                  #emailInput="ngModel"
+                  required
+                  email
+                />
+                <mat-error *ngIf="emailInput.invalid"
+                  >Please enter a valid email.</mat-error
+                >
               </mat-form-field>
-      </td>
-      </tr></table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field>
+                <input
+                  type="password"
+                  name="password"
+                  ngModel
+                  matInput
+                  placeholder="Password"
+                  #passwordInput="ngModel"
+                  required
+                />
+                <mat-error *ngIf="passwordInput.invalid"
+                  >Please enter a valid password.</mat-error
+                >
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" type="submit">Login</button>
+      </mat-card-actions>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" type="submit">
+          Forgot Password
+        </button>
+      </mat-card-actions>
     </form>
-  </mat-card-content>
-  <mat-card-actions>
-      <button mat-raised-button color="accent" type="submit">Login</button>
-  </mat-card-actions>
-  <mat-card-actions>
-    <div class="card-block">
-      <button class="btn btn-social-icon btn-google" (click)="signInWithGoogle()"><span class="fa fa-google"></span></button>
-      <!-- <button class="btn btn-social-icon btn-facebook" (click)="signInWithFB()"><span class="fa fa-facebook"></span></button>
-      <button class="btn btn-social-icon btn-linkedin" (click)="signInWithLinkedIn()"><span class="fa fa-linkedin"></span></button>-->
-    </div>
-  </mat-card-actions>
-  <mat-card-actions>
-      <button mat-raised-button color="accent" type="submit">Forgot Password</button>
-  </mat-card-actions>
-</mat-card>
+    <mat-card-actions>
+      <div class="card-block">
+        <!---<button class="btn btn-social-icon btn-google" (click)="signInWithGoogle()"><span class="fa fa-google"></span></button>
+      <button class="btn btn-social-icon btn-facebook" (click)="signInWithFB()"><span class="fa fa-facebook"></span></button>!-->
 
+        <button class="loginBtn loginBtn--facebook" (click)="signInWithFB()">
+          Login with Facebook
+        </button>
 
+        <button class="loginBtn loginBtn--google" (click)="signInWithGoogle()">
+          Login with Google
+        </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
 
   <div *ngIf="loggedin">
-      <app-user-profile></app-user-profile>
-    </div>
+    <app-user-profile></app-user-profile>
+  </div>
+</div>

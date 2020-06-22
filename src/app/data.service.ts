@@ -13,6 +13,7 @@ export class DataService {
   loginUrl: string;
   profileUrl: string;
   userId: string;
+  getPaymenyUrl: string;
   selectedItems: any;
   allItems: any;
   totalCost: any;
@@ -31,6 +32,7 @@ export class DataService {
     this.registerUrl = 'http://localhost:3000/users/register';
     this.loginUrl = 'http://localhost:3000/users/login';
     this.profileUrl = 'http://localhost:3000/users/userdetails/';
+    this.getPaymenyUrl = 'http://localhost:3000/menuNew/payme';
     this.isloggedin = false;
     this.isadmin = false;
     this.selectedItems = [];
@@ -59,6 +61,7 @@ export class DataService {
   }
 
   loginUser(user: any) {
+    console.log('here in login' + JSON.stringify(user))
     return this.http.post<any>(this.loginUrl, user);
   }
 
@@ -66,5 +69,9 @@ export class DataService {
     const url = this.profileUrl + this.userId
     // console.log('url=='+url+"end")
     return this.http.get<any>(this.profileUrl + this.userId);
+  }
+
+  getPayment(card: any) {
+    return this.http.post<any>(this.getPaymenyUrl, card);
   }
 }

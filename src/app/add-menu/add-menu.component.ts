@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { NgForm } from '@angular/forms';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-add-menu',
@@ -12,7 +13,7 @@ export class AddMenuComponent implements OnInit {
   cost: number;
   description: string;
   image1: string;
-  constructor(private data: DataService) { }
+  constructor(private data: DataService, private flashMessage: FlashMessagesService) { }
 
   ngOnInit(): void {
 
@@ -40,8 +41,21 @@ export class AddMenuComponent implements OnInit {
       description: form.value.description,
       image: form.value.image1
     };
-    this.data.addMenu(newMenu).subscribe(() => {
-      this.data.getMenu();
+    this.data.addMenu(newMenu).subscribe((menuInfo: any) => {
+      if(menuInfo['success'])
+      {
+        this.data.getMenu();
+        this.flashMessage.show('Successfully added Menu!', {
+          cssClass: 'alert-success',
+          timeout: 3000
+        });
+      }
+      else{
+        this.flashMessage.show(JSON.stringify(menuInfo['msg']), {
+          cssClass: 'alert-danger',
+          timeout: 5000
+        });
+      }
       console.log('successfully added new menu');
     });
   }

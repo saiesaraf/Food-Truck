@@ -1,23 +1,26 @@
 <mat-card>
     <form class="my-form" (submit)="registerUser(registerForm)" #registerForm="ngForm">
-        <mat-form-field class="full-width">
+        <mat-form-field class="full-width" class ="spaceAdded">
             <input matInput name="fname" ngModel type="fname" placeholder="Name" #fnameInput="ngModel" required fname>
-            <mat-error *ngIf="fnameInput.invalid">Please enter a valid name</mat-error>
-          </mat-form-field>
-      <mat-form-field class="full-width">
+            <mat-error class="error" *ngIf="fnameInput.invalid">Please enter a valid name</mat-error>
+        </mat-form-field>
+
+      <mat-form-field class="full-width" class ="spaceAdded">
         <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
-        <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
+        <mat-error class="error" *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width" class="noSpace">
         <input matInput name="password" ngModel type="password" placeholder="password" #passwordInput="ngModel" required password minlength="1" >
       </mat-form-field>
-      <div class="error" *ngIf="isPasswordInvalid(registerForm)">Wrong password.</div>
+      <div class="error" *ngIf ="!isPasswordEntered(registerForm)">Please Enter Password</div>
+      <div class="error" *ngIf="isPasswordEntered(registerForm) && isPasswordInvalid(registerForm)">Password do not satisfy requirements.<br>Password needs to be between 4 and 20 characters.<br> Password must contain atleast 1 alphabet, 1 number and 1 special character</div>
 
       <mat-form-field class="full-width" class="noSpace">
           <input matInput name="password2" ngModel type="password" placeholder="password" #passwordInput="ngModel" required password minlength="1" >
         </mat-form-field>
-        <div class="error" *ngIf="NotequalPassword(registerForm)">Passwords do not match</div>
+        <div class="error" *ngIf ="!isPasswordEntered(registerForm)">Please Enter Password</div>
+        <div class="error" *ngIf="isPasswordEntered(registerForm) && NotequalPassword(registerForm)">Passwords do not match</div>
 
       <button mat-raised-button color="accent" type="submit">Register</button>
     </form>

@@ -12,9 +12,14 @@ mat-spinner {
   margin: auto;
 }
 
+mat-error {
+  font: 4px;
+  color: red;
+  padding-bottom: 16px;
+}
 
 .error {
-  font: 4px;
+  font: 2px;
   color: red;
   padding-bottom: 16px;
 }
@@ -31,4 +36,8 @@ mat-spinner {
 
 .full-width {
   width: 100%;
+}
+
+.spaceAdded {
+  padding-bottom: 10px;
 }
