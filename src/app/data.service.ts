@@ -24,15 +24,16 @@ export class DataService {
 
   // add
   order: Order[];
-
+  herokuUrl: string
   constructor(private http: HttpClient) {
-    this.url = 'http://localhost:3000/menuNew';
-    this.billurl = 'http://localhost:3000/menuNew/post_order';
-    this.addurl = 'http://localhost:3000/menuNew/menu_name';
-    this.registerUrl = 'http://localhost:3000/users/register';
-    this.loginUrl = 'http://localhost:3000/users/login';
-    this.profileUrl = 'http://localhost:3000/users/userdetails/';
-    this.getPaymenyUrl = 'http://localhost:3000/menuNew/payme';
+    this.herokuUrl = 'https://aqueous-beach-21837.herokuapp.com'
+    this.url = this.herokuUrl + '/menuNew';
+    this.billurl = this.herokuUrl + '/menuNew/post_order';
+    this.addurl = this.herokuUrl + '/menuNew/menu_name';
+    this.registerUrl = this.herokuUrl + '/users/register';
+    this.loginUrl = this.herokuUrl + '/users/login';
+    this.profileUrl = this.herokuUrl + '/users/userdetails/';
+    this.getPaymenyUrl = this.herokuUrl + '/menuNew/payme';
     this.isloggedin = false;
     this.isadmin = false;
     this.selectedItems = [];
