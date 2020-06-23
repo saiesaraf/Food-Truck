@@ -1,8 +1,7 @@
 <div class="container">
 
-In menu component
 <input type="text" placeholder="Search Here" [(ngModel)]="term">
-<div *ngFor="let item of data.allItems.name|filter:term; let i = index">
+<div *ngFor="let item of data.allItems|filter:term; let i = index">
       <div class="col-md-3 col-sm-6" style="display:flex;flex-wrap:wrap; flex-direction: row;" >
           <div class="thumbnail">
             <img [src]="item.image" alt="image" />
