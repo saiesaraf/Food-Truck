@@ -27,16 +27,23 @@
           </tr>
           <tr>
             <td>
+
               <mat-form-field>
-                <input
-                  type="password"
-                  name="password"
-                  ngModel
-                  matInput
-                  placeholder="Password"
-                  #passwordInput="ngModel"
-                  required
-                />
+                  <show-hide-password size="lg" [btnOutline]="false" btnStyle="light">
+                      <input
+                      id="mysecretpassword"
+                      type="password"
+                      name="password"
+                      ngModel
+                      matInput
+                      placeholder="Password"
+                      #passwordInput="ngModel"
+                      required
+                      matInput showHideInput
+                    />
+                    </show-hide-password>
+
+
                 <mat-error *ngIf="passwordInput.invalid"
                   >Please enter a valid password.</mat-error
                 >

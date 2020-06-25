@@ -31,8 +31,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 import { SocialLoginModule } from 'angularx-social-login';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
-
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -98,7 +97,8 @@ export function provideConfig() {
     RouterModule.forRoot(routes),
     OwlModule,
     MatGridListModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    ShowHidePasswordModule
 
   ],
   providers: [

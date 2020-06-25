@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   loggedin: boolean;
   isadmin: boolean;
   user: SocialUser;
+  showPassword: false;
   constructor(
     public data: DataService,
     private router: Router,
