@@ -5,17 +5,24 @@
     <span class="spacer"></span>
     <ul>
       <li>
-        <a mat-button routerLink="/menu" routerLinkActive="mat-accent">View Menu</a>
+        <a mat-button routerLink="/menu" class="first_btn" routerLinkActive="mat-accent">View Menu</a>
       </li>
       <li *ngIf="!data.isloggedin">
-        <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
+        <a mat-button routerLink="/login" class="first_btn" routerLinkActive="mat-accent">Login</a>
       </li>
       <li *ngIf="!data.isloggedin">
-        <a mat-button routerLink="/register" routerLinkActive="mat-accent">Register</a>
+          <a mat-button routerLink="/addcart" routerLinkActive="mat-accent"><i class="fa fa-shopping-cart" style="font: size 48px;color:white"></i>
+            <span class='badge badge-warning' id='lblCartCount'> {{ getCartQuantity() }}</span></a>
       </li>
+
       <li *ngIf="data.isloggedin">
           <a mat-button routerLink="/logout" routerLinkActive="mat-accent">Logout</a>
       </li>
+
+      <li *ngIf="data.isloggedin">
+          <a mat-button routerLink="/user-profile" routerLinkActive="mat-accent">Account</a>
+      </li>
+
     </ul>
   </mat-toolbar>
 

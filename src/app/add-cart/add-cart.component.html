@@ -8,7 +8,26 @@
 <div *ngIf="getTotal() >0">
       Your total Bill is {{ getTotal() }}
 </div>
-<button (click)="placedOrder()" type="button">Continue to Checkout</button>
+
+<div>
+<div *ngIf="getTotal() <= 0">
+  Your Cart is empty, Please order food
+  <button (click)="orderFood()" class="sign_in_btn" type="button">Order Food</button>
+</div>
+
+<div *ngIf="getTotal() >0 ">
+    <div *ngIf="data.isloggedin == false">
+        <button (click)="placedOrderLogin()" type="button">Sign in to place Order</button>
+    </div>
+    <div *ngIf ="data.isloggedin == true">
+  <button (click)="placedOrder()" class="sign_in_btn" type="button">Place order</button>
+</div>
+<div>
+
+
+</div>
+</div>
+</div>
 </mat-card>
 
 

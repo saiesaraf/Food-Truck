@@ -17,3 +17,10 @@
   transform: translate(-50%, -50%);
   color: white;
 }
+
+.back-image {
+  height:100%;
+  background-size: cover;
+  background-size:contain;
+  position: relative;
+}

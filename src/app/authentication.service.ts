@@ -12,7 +12,7 @@ const MINUTES_UNITL_AUTO_LOGOUT = 10;
 export class AuthenticationService {
   private token: string;
 
-  constructor(private data: DataService,private http: HttpClient, private router: Router,  private ngZone: NgZone) {
+  constructor(private data: DataService, private http: HttpClient, private router: Router,  private ngZone: NgZone) {
     //this.check();
     this.initInterval();
   }
@@ -21,19 +21,22 @@ export class AuthenticationService {
     localStorage.clear();
   }
 
-  storeUserData(token, user) {
-    localStorage.setItem('id_token', token);
+  storeUserUse(user) {
     localStorage.setItem('user', user);
     const date = new Date().getTime();
-
     localStorage.setItem('loginTime', date.toString());
-
-
     console.log('localstorage data' + localStorage.getItem('loginTime') );
 
   }
 
+  storeUserData(token, user) {
+    localStorage.setItem('id_token', token);
+    localStorage.setItem('user', user);
+    const date = new Date().getTime();
+    localStorage.setItem('loginTime', date.toString());
+    console.log('localstorage data' + localStorage.getItem('loginTime') );
 
+  }
 
   initInterval() {
     this.ngZone.runOutsideAngular(() => {

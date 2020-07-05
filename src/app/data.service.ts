@@ -21,12 +21,18 @@ export class DataService {
   public isloggedin: boolean;
   public isadmin: boolean;
   quantity: any[];
+  placedOrder: string;
+  prevOrder: string;
 
   // add
   order: Order[];
-  herokuUrl: string
+  herokuUrl: string;
+  localUrl: string;
   constructor(private http: HttpClient) {
-    this.herokuUrl = 'https://aqueous-beach-21837.herokuapp.com'
+    this.herokuUrl = 'https://aqueous-beach-21837.herokuapp.com' ;
+    this.localUrl = 'http://localhost:5000' ;
+
+    this.herokuUrl = this.localUrl;
     this.url = this.herokuUrl + '/menuNew';
     this.billurl = this.herokuUrl + '/menuNew/post_order';
     this.addurl = this.herokuUrl + '/menuNew/menu_name';
@@ -34,6 +40,8 @@ export class DataService {
     this.loginUrl = this.herokuUrl + '/users/login';
     this.profileUrl = this.herokuUrl + '/users/userdetails/';
     this.getPaymenyUrl = this.herokuUrl + '/menuNew/payme';
+    this.placedOrder = this.localUrl + '/orderNew/order';
+    this.prevOrder = this.localUrl + '/orderNew/getOrder/';
     this.isloggedin = false;
     this.isadmin = false;
     this.selectedItems = [];
@@ -41,7 +49,7 @@ export class DataService {
     this.totalCost = 0;
     this.allItems = [];
     this.quantity =[];
-    this.order = []
+    this.order = [];
   }
 
   getMenu() {
@@ -74,5 +82,14 @@ export class DataService {
 
   getPayment(card: any) {
     return this.http.post<any>(this.getPaymenyUrl, card);
+  }
+
+  postOrder(orderToplace: any)
+  {
+    return this.http.post<any>(this.placedOrder, orderToplace);
+  }
+  getPrevOrders()
+  {
+    return this.http.get<any>(this.prevOrder + this.userId);
   }
 }

@@ -1,3 +1,4 @@
+import { NgImageSliderModule } from 'ng-image-slider';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -32,6 +33,7 @@ import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'a
 import { SocialLoginModule } from 'angularx-social-login';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+
 const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -56,7 +58,9 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent},
   { path: 'payment', component: PaymentComponent},
   { path: 'main', component: BackgroundComponent},
-  {path: 'admin', component: AdminComponent}
+  {path: 'admin', component: AdminComponent},
+  {path: 'addcart', component: AddCartComponent},
+  {path: 'background', component: BackgroundComponent}
 ];
 
 export function provideConfig() {
@@ -81,6 +85,7 @@ export function provideConfig() {
     AdminComponent
   ],
   imports: [
+    NgImageSliderModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -98,8 +103,7 @@ export function provideConfig() {
     OwlModule,
     MatGridListModule,
     Ng2SearchPipeModule,
-    ShowHidePasswordModule
-
+    ShowHidePasswordModule,
   ],
   providers: [
     DataService,

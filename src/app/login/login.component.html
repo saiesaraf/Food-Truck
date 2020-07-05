@@ -54,9 +54,7 @@
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button color="accent" type="submit">Login</button>
-      </mat-card-actions>
-      <mat-card-actions>
-        <button mat-raised-button color="accent" type="submit">
+        <button  mat-raised-button color="accent" class ="second-btn" type="submit">
           Forgot Password
         </button>
       </mat-card-actions>
@@ -66,18 +64,20 @@
         <!---<button class="btn btn-social-icon btn-google" (click)="signInWithGoogle()"><span class="fa fa-google"></span></button>
       <button class="btn btn-social-icon btn-facebook" (click)="signInWithFB()"><span class="fa fa-facebook"></span></button>!-->
 
-        <button class="loginBtn loginBtn--facebook" (click)="signInWithFB()">
+        <!---<button class="loginBtn loginBtn--facebook" (click)="signInWithFB()">
           Login with Facebook
-        </button>
+        </button>!-->
 
         <button class="loginBtn loginBtn--google" (click)="signInWithGoogle()">
           Login with Google
         </button>
       </div>
+      <div>
+          Not a member? <button mat-raised-button color="accent" (click)="signUp()" type="button">Sign Up</button>
+
+      </div>
     </mat-card-actions>
   </mat-card>
 
-  <div *ngIf="loggedin">
-    <app-user-profile></app-user-profile>
-  </div>
+
 </div>

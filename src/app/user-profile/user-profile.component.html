@@ -1,3 +1,31 @@
-<p>user-profile works!</p>
-
+Hello
 <div *ngIf="currentUser">currentUser == {{ currentUser.name }}</div>
+Your Previous orders are :
+
+<div *ngIf="prevOrdersReturned">
+
+<div *ngFor='let order of prevOrdersReturned; let i=index'>
+    <div *ngFor="let eachorder of order.items" class="row" style="margin-top: 10px">
+      <div class="col-sm">
+        Name: {{eachorder.name}}
+      </div>
+      <div class="col-sm">
+        cost: {{eachorder.cost}}
+      </div>
+      <div class="col-sm">
+          Description: {{eachorder.description}}
+        </div>
+        <div class="col-sm">
+            quantity: {{eachorder.quantity}}
+        </div>
+    </div>
+
+      total is {{ order.total }}<br>
+      Date is {{ order.placedOrderDate}}
+
+  </div>
+
+
+
+
+

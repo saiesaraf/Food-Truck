@@ -9,13 +9,31 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
   isloggedin: boolean;
+  cartquantity: number;
   constructor(
     public data: DataService,
     public router: Router,
     public route: ActivatedRoute
-  ) {}
-  name: string
+  ) {
+    this.cartquantity = 0;
+  }
+  name: string;
   ngOnInit(): void {
-
+    for (let i = 0; i < this.data.allItems.length; i++) {
+      if (this.data.order[i].quantity > 0) {
+        console.log(this.data.order[i].quantity);
+        this.cartquantity = this.cartquantity + 1;
+      }
+    }
+  }
+  getCartQuantity() {
+    this.cartquantity = 0;
+    for (let i = 0; i < this.data.allItems.length; i++) {
+      if (this.data.order[i].quantity > 0) {
+        console.log(this.data.order[i].quantity);
+        this.cartquantity = this.cartquantity + 1;
+      }
+    }
+    return this.cartquantity;
   }
 }

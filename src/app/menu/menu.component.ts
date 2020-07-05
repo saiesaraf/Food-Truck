@@ -3,6 +3,7 @@ import { DataService } from '../data.service';
 import { Router } from '@angular/router';
 import { Order } from '../order';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-menu',
@@ -19,9 +20,12 @@ export class MenuComponent implements OnInit {
   imageToShow: any;
   routerLink: any;
   term: string;
+  menuname: string;
+  afterSearch: any[];
   constructor(public data: DataService, private router: Router) {
     this.data.quantity = [];
     this.selectedMenu = [];
+    this.afterSearch = [];
   }
 
   ngOnInit(): void {
@@ -73,9 +77,11 @@ export class MenuComponent implements OnInit {
         this.data.quantity.push(0);
         const currOrder: Order = {
           name: this.data.allItems[i].name,
-          quantity: 0
+          cost: this.data.allItems[i].cost,
+          quantity: 0,
+          description: this.data.allItems[i].description
         }
-        this.data.order.push(currOrder)
+        this.data.order.push(currOrder);
 
       }
     });
@@ -84,5 +90,32 @@ export class MenuComponent implements OnInit {
   onClick() {
     this.clickMessage = 'You clicked me';
     this.router.navigate(['/addmenu']);
+  }
+
+  selectedMenu1(form: NgForm)
+  {
+    console.log('I am here');
+    console.log('You selected' + form.value.menuname);
+    this.afterSearch = [];
+    const toSearch = form.value.menuname.toLowerCase();
+    for (let i = 0; i < this.data.allItems.length; i++)
+    {
+      const dataName = this.data.allItems[i].name.toLowerCase();
+      // tslint:disable-next-line: no-shadowed-variable
+      if ( dataName.startsWith(toSearch))
+      {
+        console.log('We could find' + dataName);
+        this.afterSearch.push(this.data.allItems[i]);
+        break;
+      }
+      else{
+        console.log('Menu is not available');
+      }
+    }
+    form.resetForm();
+  }
+
+  backtoMenu(){
+    this.afterSearch.length = 0;
   }
 }

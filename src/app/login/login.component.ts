@@ -42,29 +42,31 @@ export class LoginComponent implements OnInit {
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => {
       console.log(x);
-      this.auth.storeUserData('dummy', x.email);
+      this.data.userId = x.email;
+      this.auth.storeUserUse(x.email);
       this.data.isloggedin = true;
       this.flashMessage.show('You are now logged in successfully!', {
         cssClass: 'alert-success',
         timeout: 3000
       });
-      this.router.navigate(['user-profile']);
+      this.router.navigate(['/payment']);
     });
   }
-  signInWithFB(): void {
+  /*signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => {
       console.log(x);
       this.auth.storeUserData('dummy', x.email);
+      this.data.userId = x.email;
+      this.auth.storeUserData(localStorage.user, x.email);
       this.data.isloggedin = true;
       this.flashMessage.show('You are now logged in successfully!', {
         cssClass: 'alert-success',
         timeout: 3000
       });
-      this.router.navigate(['user-profile']);
-    })
-  }
+       this.router.navigate(['/payment']);
+    });
+  }*/
   LoginUser(form: NgForm) {
-    console.log('here step1')
     if (form.invalid) {
       return;
     }
@@ -80,16 +82,14 @@ export class LoginComponent implements OnInit {
         });
         console.log('email is' + form.value.email);
         this.auth.storeUserData(loginDetails.token, form.value.email);
+        this.auth.storeUserData(loginDetails.user, form.value.email);
         this.loggedin = true;
         this.data.isloggedin = true;
-
+        this.data.userId = loginDetails.user;
+        this.router.navigate(['/payment']);
         if (prevUser.email == 'saie1.saraf@gmail.com') {
           this.data.isadmin = true;
           this.isadmin = true;
-        }
-
-        if (this.data.isloggedin === true) {
-          this.router.navigate(['user-profile']);
         }
         if (this.data.isadmin === true) {
           this.router.navigate(['/addmenu']);
@@ -102,5 +102,10 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['register']);
       }
     });
+  }
+
+  signUp()
+  {
+    this.router.navigate(['/register']);
   }
 }
