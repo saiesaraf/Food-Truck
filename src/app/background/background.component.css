@@ -20,7 +20,9 @@
 
 .back-image {
   height:100%;
-  background-size: cover;
   background-size:contain;
   position: relative;
+}
+.back {
+    background-image: url('../../assets/img/slider/slider-content1.png')
 }
