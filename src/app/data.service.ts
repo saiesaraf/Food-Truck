@@ -40,8 +40,8 @@ export class DataService {
     this.loginUrl = this.herokuUrl + '/users/login';
     this.profileUrl = this.herokuUrl + '/users/userdetails/';
     this.getPaymenyUrl = this.herokuUrl + '/menuNew/payme';
-    this.placedOrder = this.localUrl + '/orderNew/order';
-    this.prevOrder = this.localUrl + '/orderNew/getOrder/';
+    this.placedOrder = this.herokuUrl + '/orderNew/order';
+    this.prevOrder = this.herokuUrl + '/orderNew/getOrder/';
     this.isloggedin = false;
     this.isadmin = false;
     this.selectedItems = [];
