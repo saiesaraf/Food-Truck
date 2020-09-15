@@ -32,8 +32,8 @@ export class BackgroundComponent implements OnInit {
     title: 'Pizza'
   } ,
   {
-    image: '../../assets/img/slider/pasta.jpg',
-    thumbImage: '../../assets/img/slider/pasta.jpg',
+    image: '../../assets/img/slider/pasta2.jpg',
+    thumbImage: '../../assets/img/slider/pasta2.jpg',
     title: 'Pasta'
   }
   ];
